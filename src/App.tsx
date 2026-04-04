@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useConnectionStore } from '@/store/connection'
 import { SettingsPage } from '@/features/settings/page'
 import { MailPage } from '@/features/mail/page'
+import { MayorChatPage } from '@/features/mayor-chat/page'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,7 +30,7 @@ function AppInner() {
       <Route element={<Layout />}>
         <Route path="/" element={<Navigate to="/mayor" replace />} />
         <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/mayor" element={<Placeholder name="Mayor Chat" />} />
+        <Route path="/mayor" element={<MayorChatPage />} />
         <Route path="/workers" element={<Placeholder name="Workers" />} />
         <Route path="/workers/:id" element={<Placeholder name="Worker Detail" />} />
         <Route path="/infra" element={<Placeholder name="Infrastructure" />} />
