@@ -5,6 +5,7 @@ import { Layout } from '@/components/layout'
 import { useEffect } from 'react'
 import { useConnectionStore } from '@/store/connection'
 import { SettingsPage } from '@/features/settings/page'
+import { MailPage } from '@/features/mail/page'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,7 +36,7 @@ function AppInner() {
         <Route path="/beads" element={<Placeholder name="Beads" />} />
         <Route path="/rigs" element={<Placeholder name="Rigs" />} />
         <Route path="/refinery" element={<Placeholder name="Refinery" />} />
-        <Route path="/mail" element={<Placeholder name="Mail" />} />
+        <Route path="/mail" element={<MailPage />} />
         <Route path="/convoys" element={<Placeholder name="Convoys" />} />
         <Route path="/hooks" element={<Placeholder name="Hooks" />} />
         <Route path="/molecules" element={<Placeholder name="Molecules" />} />
