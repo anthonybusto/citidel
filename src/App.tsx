@@ -7,6 +7,8 @@ import { useConnectionStore } from '@/store/connection'
 import { SettingsPage } from '@/features/settings/page'
 import { MailPage } from '@/features/mail/page'
 import { MayorChatPage } from '@/features/mayor-chat/page'
+import { WorkersPage } from '@/features/workers/page'
+import { InfrastructurePage } from '@/features/infrastructure/page'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,9 +33,9 @@ function AppInner() {
         <Route path="/" element={<Navigate to="/mayor" replace />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/mayor" element={<MayorChatPage />} />
-        <Route path="/workers" element={<Placeholder name="Workers" />} />
+        <Route path="/workers" element={<WorkersPage />} />
         <Route path="/workers/:id" element={<Placeholder name="Worker Detail" />} />
-        <Route path="/infra" element={<Placeholder name="Infrastructure" />} />
+        <Route path="/infra" element={<InfrastructurePage />} />
         <Route path="/beads" element={<Placeholder name="Beads" />} />
         <Route path="/rigs" element={<Placeholder name="Rigs" />} />
         <Route path="/refinery" element={<Placeholder name="Refinery" />} />
