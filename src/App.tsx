@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Layout } from '@/components/layout'
 import { useEffect } from 'react'
 import { useConnectionStore } from '@/store/connection'
+import { SettingsPage } from '@/features/settings/page'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +27,7 @@ function AppInner() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Navigate to="/mayor" replace />} />
-        <Route path="/settings" element={<Placeholder name="Settings" />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="/mayor" element={<Placeholder name="Mayor Chat" />} />
         <Route path="/workers" element={<Placeholder name="Workers" />} />
         <Route path="/workers/:id" element={<Placeholder name="Worker Detail" />} />
