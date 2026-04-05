@@ -1,13 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { createApiClient } from '@/api/client'
 import { MailInboxResponseSchema, MailThreadsResponseSchema, MailMessageSchema } from '@/api/schemas/mail'
-import { useConnectionStore } from '@/store/connection'
 import { useMailStore } from '@/store/slices/mail'
+import { useClient } from '@/hooks/use-client'
 
-function useClient() {
-  const { baseUrl, token } = useConnectionStore()
-  return baseUrl && token ? createApiClient(baseUrl, token) : null
-}
 
 export function useInbox() {
   const client = useClient()

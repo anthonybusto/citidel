@@ -1,15 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { createApiClient } from '@/api/client'
 import { CrewResponseSchema } from '@/api/schemas/crew'
 import { PolecatListResponseSchema } from '@/api/schemas/polecat'
-import { useConnectionStore } from '@/store/connection'
 import { useWorkersStore, type Worker } from '@/store/slices/workers'
 import { runCommand } from '@/api/run'
+import { useClient } from '@/hooks/use-client'
 
-function useClient() {
-  const { baseUrl, token } = useConnectionStore()
-  return baseUrl && token ? createApiClient(baseUrl, token) : null
-}
 
 export function useWorkers() {
   const client = useClient()

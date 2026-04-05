@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Layout } from '@/components/layout'
 import { useEffect } from 'react'
 import { useConnectionStore } from '@/store/connection'
+import { ErrorBanner } from '@/components/error-banner'
 import { SettingsPage } from '@/features/settings/page'
 import { MailPage } from '@/features/mail/page'
 import { MayorChatPage } from '@/features/mayor-chat/page'
@@ -28,10 +29,19 @@ const queryClient = new QueryClient({
 })
 
 function AppInner() {
-  const hydrate = useConnectionStore((s) => s.hydrate)
-  useEffect(() => { hydrate() }, [hydrate])
+  const autoConnect = useConnectionStore((s) => s.autoConnect)
+  const status = useConnectionStore((s) => s.status)
+  const error = useConnectionStore((s) => s.error)
+  useEffect(() => { autoConnect() }, [autoConnect])
 
   return (
+    <>
+      {status === 'connecting' && (
+        <div className="bg-yellow-500/10 px-4 py-2 text-center text-sm text-yellow-500">
+          Connecting to Gas Town dashboard...
+        </div>
+      )}
+      {status === 'error' && error && <ErrorBanner message={error} />}
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Navigate to="/mayor" replace />} />
@@ -50,6 +60,7 @@ function AppInner() {
         <Route path="/wisps" element={<WispsPage />} />
       </Route>
     </Routes>
+    </>
   )
 }
 

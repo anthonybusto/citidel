@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { createApiClient } from '@/api/client'
 import { SessionPreviewResponseSchema } from '@/api/schemas/session'
-import { useConnectionStore } from '@/store/connection'
+import { useClient } from '@/hooks/use-client'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 type SessionPreviewProps = {
@@ -9,8 +8,7 @@ type SessionPreviewProps = {
 }
 
 export function SessionPreview({ sessionName }: SessionPreviewProps) {
-  const { baseUrl, token } = useConnectionStore()
-  const client = baseUrl && token ? createApiClient(baseUrl, token) : null
+  const client = useClient()
 
   const preview = useQuery({
     queryKey: ['session', 'preview', sessionName],
