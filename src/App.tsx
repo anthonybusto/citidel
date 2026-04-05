@@ -9,6 +9,14 @@ import { MailPage } from '@/features/mail/page'
 import { MayorChatPage } from '@/features/mayor-chat/page'
 import { WorkersPage } from '@/features/workers/page'
 import { InfrastructurePage } from '@/features/infrastructure/page'
+import { RigsPage } from '@/features/rigs/page'
+import { BeadsPage } from '@/features/beads/page'
+import { WorkerDetailPage } from '@/features/worker-detail/page'
+import { ConvoysPage } from '@/features/convoys/page'
+import { HooksPage } from '@/features/hooks-viz/page'
+import { MoleculesPage } from '@/features/molecules/page'
+import { RefineryPage } from '@/features/refinery/page'
+import { WispsPage } from '@/features/wisps/page'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,10 +26,6 @@ const queryClient = new QueryClient({
     },
   },
 })
-
-function Placeholder({ name }: { name: string }) {
-  return <div className="text-muted-foreground">Feature: {name} (coming soon)</div>
-}
 
 function AppInner() {
   const hydrate = useConnectionStore((s) => s.hydrate)
@@ -34,17 +38,16 @@ function AppInner() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/mayor" element={<MayorChatPage />} />
         <Route path="/workers" element={<WorkersPage />} />
-        <Route path="/workers/:id" element={<Placeholder name="Worker Detail" />} />
+        <Route path="/workers/:id" element={<WorkerDetailPage />} />
         <Route path="/infra" element={<InfrastructurePage />} />
-        <Route path="/beads" element={<Placeholder name="Beads" />} />
-        <Route path="/rigs" element={<Placeholder name="Rigs" />} />
-        <Route path="/refinery" element={<Placeholder name="Refinery" />} />
+        <Route path="/beads" element={<BeadsPage />} />
+        <Route path="/rigs" element={<RigsPage />} />
+        <Route path="/refinery" element={<RefineryPage />} />
         <Route path="/mail" element={<MailPage />} />
-        <Route path="/convoys" element={<Placeholder name="Convoys" />} />
-        <Route path="/hooks" element={<Placeholder name="Hooks" />} />
-        <Route path="/molecules" element={<Placeholder name="Molecules" />} />
-        <Route path="/formulas" element={<Placeholder name="Formulas" />} />
-        <Route path="/wisps" element={<Placeholder name="Wisps" />} />
+        <Route path="/convoys" element={<ConvoysPage />} />
+        <Route path="/hooks" element={<HooksPage />} />
+        <Route path="/molecules" element={<MoleculesPage />} />
+        <Route path="/wisps" element={<WispsPage />} />
       </Route>
     </Routes>
   )
